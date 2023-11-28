@@ -1,0 +1,30 @@
+<form id="form-search" action="/search">
+    <input type="search" name="q" placeholder="Buscar">
+    <button>Buscar</button>
+</form>
+<style>
+    @import url(/css/style.css);
+
+    #form-search {
+        display: flex;
+
+        & input,
+        button {
+            font-size: larger;
+        }
+
+        & input {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 720px) {
+        #form-search {
+
+            & input,
+            button {
+                font-size: medium;
+            }
+        }
+    }
+</style>

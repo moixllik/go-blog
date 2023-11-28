@@ -1,0 +1,62 @@
+:root {
+    --c0: #000;
+    --c1: #222;
+    --c2: #ddd;
+    --c3: #bbb;
+}
+
+html {
+    background-color: var(--c1);
+    color: var(--c2);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
+}
+
+body {
+    margin-top: 3em;
+}
+
+main {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1 {
+    color: #0f0;
+    font-size: xx-large;
+}
+
+h2 {
+    font-size: x-large;
+}
+
+h3 {
+    color: #0df;
+    font-size: large;
+}
+
+footer {
+    font-size: small;
+    text-align: center;
+    padding: 2em;
+}
+
+form {
+
+    & input,
+    button {
+        display: block;
+        outline: none;
+        border: 1px solid var(--c3);
+        background-color: var(--c1);
+        color: var(--c2);
+        padding: .5em;
+        margin: .1em;
+        border-radius: 3px;
+    }
+}

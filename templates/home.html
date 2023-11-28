@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/home.css" />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <title>{{.PageTitle}}</title>
+    <meta name="description" content="{{.PageDesc}}" />
+
+    <script async type="module" src="/js/script.mjs"></script>
+</head>
+
+<body>
+    <web-component uri="/navbar"></web-component>
+    <main>
+        <header>
+            <web-component uri="/search"></web-component>
+        </header>
+        <section>
+            <h1><a href="/">Moixllik</a></h1>
+            <h2>Computación, Contabilidad y Arte</h2>
+
+            <h3>Publicaciones</h3>
+
+            <h3>Proyectos</h3>
+
+        </section>
+        <footer>&copy; 2023</footer>
+    </main>
+</body>
+
+</html>
