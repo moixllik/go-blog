@@ -1,0 +1,30 @@
+.repos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &>div {
+        border: 3px solid transparent;
+        width: calc(90% / 3);
+    }
+
+    & h4 {
+        margin: 0;
+        padding: .3em;
+        background-color: var(--c0);
+        font-variant: small-caps;
+        border-radius: 3px;
+    }
+
+    & p {
+        padding: .5em;
+        margin: 0;
+        font-size: smaller;
+    }
+}
+
+@media (max-width: 720px) {
+    .repos>div {
+        width: 100%;
+    }
+}

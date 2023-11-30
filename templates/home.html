@@ -28,8 +28,15 @@
 
             <h3>Publicaciones</h3>
 
-            <h3>Proyectos</h3>
-
+            <h3><a href="https://github.com/moixllik?tab=repositories">Proyectos activos</a></h3>
+            <div class="repos">
+                {{range .Repos}}
+                <div>
+                    <h4><a href="{{.Url}}">{{.Name}}</a></h4>
+                    <p>{{.Desc}}</p>
+                </div>
+                {{end}}
+            </div>
         </section>
         <footer>&copy; 2023</footer>
     </main>
