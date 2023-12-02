@@ -115,7 +115,7 @@ func getUpdates() []Update {
 	opts.SetSort(bson.D{{"modified", -1}})
 	opts.SetProjection(bson.D{{"_id", 0}, {"uri", 1}, {"title", 1}, {"desc", 1}})
 
-	cursor, err := coll.Find(context.TODO(), bson.D{}, opts)
+	cursor, err := coll.Find(context.TODO(), bson.D{{"public", true}}, opts)
 	if err != nil {
 		return updates
 	}
