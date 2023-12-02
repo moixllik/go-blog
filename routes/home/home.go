@@ -104,8 +104,8 @@ func getRepos() []Repo {
 func getUpdates() []Update {
 	var updates []Update
 
-	uri := os.Getenv("MONGODB")
-	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(uri))
+	url := os.Getenv("MONGODB")
+	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(url))
 	if err != nil {
 		return updates
 	}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/docs.css" />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <title>{{.Title}}</title>
+    <meta name="description" content="{{.Desc}}" />
+
+    <script async type="module" src="/js/script.mjs"></script>
+    <script async type="module" src="/js/reader.mjs"></script>
+</head>
+
+<body>
+    <web-component uri="/navbar"></web-component>
+    <main>
+        <header>
+            <web-component uri="/search"></web-component>
+            <h1><a href="/d/{{.Uri}}">{{.Title}}</a></h1>
+            <dl>
+                <dt>Modificado:</dt>
+                <dd><my-date>{{.Modified}}</my-date></dd>
+                <dt>Etiquetas:</dt>
+                <dd>
+                    {{range $tag := .Tags}}
+                    <a href="/search?q=#{{$tag}}">{{$tag}}</a>
+                    {{end}}
+                </dd>
+                <dt>Autores:</dt>
+                <dd>
+                    {{range $author := .Authors}}
+                    <div>» <a href="/search?q=@{{$author}}">{{$author}}</a></div>
+                    {{end}}
+                </dd>
+            </dl>
+        </header>
+        <section><my-markdown>{{.Content}}</my-markdown></section>
+        <section><my-markdown>{{.Extra}}</my-markdown></section>
+        <footer>&copy; 2023</footer>
+    </main>
+</body>
+
+</html>

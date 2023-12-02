@@ -25,8 +25,8 @@ func getUris() []string {
 	var uris []string
 	domain := "https://www.cix.ovh"
 
-	uri := os.Getenv("MONGODB")
-	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(uri))
+	url := os.Getenv("MONGODB")
+	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(url))
 	if err != nil {
 		return uris
 	}

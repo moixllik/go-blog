@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"app/routes/home"
+	"app/routes/docs"
 	"app/routes/tools"
 
 	"github.com/joho/godotenv"
@@ -15,6 +16,7 @@ func main() {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/home", home.Handle)
+	mux.HandleFunc("/d/", docs.HandleReader)
 	mux.HandleFunc("/sitemap.txt", tools.Sitemap)
 
 	// Static

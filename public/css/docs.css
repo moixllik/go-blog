@@ -1,0 +1,83 @@
+header {
+    margin-bottom: 2em;
+
+    & dl {
+        color: var(--c3);
+        font-size: smaller;
+        font-variant: small-caps;
+
+        & dt {
+            font-weight: bold;
+        }
+
+        & dd {
+            font-family: monospace;
+        }
+    }
+}
+
+section {
+    margin-bottom: 2em;
+
+    & h2 {
+        margin: 0;
+    }
+
+    & code {
+        font-size: smaller;
+        background-color: black;
+        padding: 0 .5em;
+    }
+
+    & a {
+        text-decoration: underline;
+    }
+}
+
+my-markdown {
+    white-space: pre-wrap;
+}
+
+my-code {
+    background-color: black;
+    font-size: smaller;
+    display: block;
+    overflow: auto;
+    padding-left: 1em;
+
+    & i {
+        color: gray;
+    }
+
+    & b {
+        color: red;
+    }
+
+    & span {
+        color: orange;
+    }
+
+    & em {
+        font-style: normal;
+        color: green;
+    }
+}
+
+pre {
+    position: relative;
+
+    & .copy::before {
+        content: "Copy";
+        font-variant: small-caps;
+    }
+
+    & .copy {
+        position: absolute;
+        top: 1px;
+        right: 1px;
+        padding: .5em;
+        border-radius: 3px;
+        background-color: var(--c1);
+        cursor: pointer;
+    }
+}
