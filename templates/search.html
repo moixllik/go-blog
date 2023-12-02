@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/search.css" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <title>Búsqueda</title>
+
+    <script async type="module" src="/js/script.mjs"></script>
+</head>
+
+<body>
+    <web-component uri="/navbar"></web-component>
+    <main>
+        <header>
+            <form id="form-search" action="/search">
+                <input type="search" name="q" placeholder="Buscar" value="{{.Query}}">
+                <button>Buscar</button>
+            </form>
+        </header>
+        <section>
+            <h1><a href="/search">Búsqueda</a></h1>
+            <div class="updates">
+                {{range .Updates}}
+                <div>
+                    <h2>» <a href="/d/{{.Uri}}">{{.Title}}</a></h2>
+                    <p>{{.Desc}}</p>
+                </div>
+                {{end}}
+            </div>
+        </section>
+        <footer>&copy; 2023</footer>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+#form-search {
+    display: flex;
+
+    & input,
+    button {
+        font-size: larger;
+    }
+
+    & input {
+        width: 100%;
+    }
+}
+
+.updates {
+    padding-left: 1em;
+    & h2 {
+        font-size: large;
+        margin-bottom: 0;
+    }
+    & p {
+        margin-bottom: 2em;
+        font-size: smaller;
+        margin-top: .5em;
+        padding-left: 2em;
+        color: var(--c3);
+    }
+}
+
+@media (max-width: 720px) {
+    #form-search {
+
+        & input,
+        button {
+            font-size: medium;
+        }
+    }
+}

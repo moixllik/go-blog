@@ -29,13 +29,13 @@
                 <dt>Etiquetas:</dt>
                 <dd>
                     {{range $tag := .Tags}}
-                    <a href="/search?q=#{{$tag}}">{{$tag}}</a>
+                    <a href="/search?q=%23{{$tag}}">{{$tag}}</a>
                     {{end}}
                 </dd>
                 <dt>Autores:</dt>
                 <dd>
                     {{range $author := .Authors}}
-                    <div>» <a href="/search?q=@{{$author}}">{{$author}}</a></div>
+                    <div>» <a href="/search?q=%40{{$author}}">{{$author}}</a></div>
                     {{end}}
                 </dd>
             </dl>

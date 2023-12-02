@@ -17,6 +17,7 @@ func main() {
 
 	mux.HandleFunc("/home", home.Handle)
 	mux.HandleFunc("/d/", docs.HandleReader)
+	mux.HandleFunc("/search", docs.HandleSearch)
 	mux.HandleFunc("/sitemap.txt", tools.Sitemap)
 
 	// Static

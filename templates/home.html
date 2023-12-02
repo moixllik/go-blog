@@ -23,14 +23,14 @@
             <web-component uri="/search"></web-component>
         </header>
         <section>
-            <h1><a href="/">Moixllik</a></h1>
+            <h1><a href="/home">Moixllik</a></h1>
             <h2>Computación, Contabilidad y Arte</h2>
 
             <h3>Nuevas Publicaciones</h3>
             <div class="updates">
                 {{range .Updates}}
                 <div>
-                    <h4>» <a href="/d/{{.Uri}}">{{.Title}}</h4>
+                    <h4>» <a href="/d/{{.Uri}}">{{.Title}}</a></h4>
                     <p>{{.Desc}}</p>
                 </div>
                 {{end}}
