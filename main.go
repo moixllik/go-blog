@@ -1,30 +1,16 @@
 package main
 
 import (
-	"bufio"
 	"net/http"
-	"os"
-	"strings"
 
 	"app/routes/home"
+
+	"github.com/joho/godotenv"
 )
 
-func init() {
-	env, err := os.Open(".env")
-	if err != nil {
-		return
-	}
-	defer env.Close()
-
-	scanner := bufio.NewScanner(env)
-	for scanner.Scan() {
-		line := scanner.Text()
-		idx := strings.Index(line, "=")
-		os.Setenv(line[:idx], line[idx+1:])
-	}
-}
-
 func main() {
+	godotenv.Load()
+
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/home", home.Handle)

@@ -9,18 +9,30 @@ import (
 	"os"
 	"path/filepath"
 	"time"
+
+	"context"
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 type Repo struct {
-	Name string
 	Url  string
+	Name string
 	Desc string
+}
+
+type Update struct {
+	Uri   string `bson:"uri"`
+	Title string `bson:"title"`
+	Desc  string `bson:"desc"`
 }
 
 type PageData struct {
 	PageTitle string
 	PageDesc  string
 	Repos     []Repo
+	Updates   []Update
 }
 
 func Handle(w http.ResponseWriter, r *http.Request) {
@@ -29,12 +41,15 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		PageTitle: "Moixllik",
 		PageDesc:  "Computación, Contabilidad y Arte",
 		Repos:     getRepos(),
+		Updates:   getUpdates(),
 	}
+
 	tmpl.Execute(w, pageData)
 }
 
 func getRepos() []Repo {
 	var repos []Repo
+
 	tmp := filepath.Join(os.TempDir(), "repos"+fmt.Sprint(time.Now().Day()))
 	_, err := os.Stat(tmp)
 	if os.IsNotExist(err) {
@@ -67,7 +82,9 @@ func getRepos() []Repo {
 	if err != nil {
 		return repos
 	}
+
 	var data []map[string]interface{}
+
 	if err := json.Unmarshal(b, &data); err != nil {
 		return repos
 	}
@@ -82,4 +99,34 @@ func getRepos() []Repo {
 		}
 	}
 	return repos
+}
+
+func getUpdates() []Update {
+	var updates []Update
+
+	uri := os.Getenv("MONGODB")
+	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(uri))
+	if err != nil {
+		return updates
+	}
+	coll := client.Database("moixllik").Collection("docs")
+
+	opts := options.Find().SetLimit(5)
+	opts.SetSort(bson.D{{"modified", -1}})
+	opts.SetProjection(bson.D{{"_id", 0}, {"uri", 1}, {"title", 1}, {"desc", 1}})
+
+	cursor, err := coll.Find(context.TODO(), bson.D{}, opts)
+	if err != nil {
+		return updates
+	}
+
+	for cursor.Next(context.TODO()) {
+		var result Update
+
+		if err := cursor.Decode(&result); err != nil {
+			continue
+		}
+		updates = append(updates, result)
+	}
+	return updates
 }

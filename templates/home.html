@@ -26,9 +26,17 @@
             <h1><a href="/">Moixllik</a></h1>
             <h2>Computación, Contabilidad y Arte</h2>
 
-            <h3>Publicaciones</h3>
+            <h3>Nuevas Publicaciones</h3>
+            <div class="updates">
+                {{range .Updates}}
+                <div>
+                    <h4><a href="/d/{{.Uri}}">{{.Title}}</h4>
+                    <p>{{.Desc}}</p>
+                </div>
+                {{end}}
+            </div>
 
-            <h3><a href="https://github.com/moixllik?tab=repositories">Proyectos activos</a></h3>
+            <h3><a href="https://github.com/moixllik?tab=repositories">Proyectos Activos</a></h3>
             <div class="repos">
                 {{range .Repos}}
                 <div>

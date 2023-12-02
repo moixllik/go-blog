@@ -23,6 +23,20 @@
     }
 }
 
+.updates {
+    &>div {
+        padding-left: 1em;
+    }
+    & h4 {
+        margin: 0;
+    }
+    & p {
+        color: var(--c3);
+        padding-left: 1em;
+        font-size: smaller;
+    }
+}
+
 @media (max-width: 720px) {
     .repos>div {
         width: 100%;
